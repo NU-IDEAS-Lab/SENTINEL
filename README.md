@@ -2,11 +2,14 @@
 
 We are currently organizing the code for SENTINEL. If you are interested in our work, please star our project.
 
-<a href='https://arxiv.org/abs/2510.12985'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a> <a href='https://nu-ideas-lab.github.io/SENTINEL/'><img src='https://img.shields.io/badge/Project-Page-green'></a>
-</a>
+<a href='https://arxiv.org/abs/2510.12985'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a> <a href='https://nu-ideas-lab.github.io/SENTINEL/'><img src='https://img.shields.io/badge/Project-Page-green'></a> <img src='https://img.shields.io/badge/NeurIPS-2026-4e2a84'> <a href='https://nu-ideas-lab.github.io/ManiGuard/'><img src='https://img.shields.io/badge/Follow--up-ManiGuard-blue'></a>
+
+## News
+- **[2026]** SENTINEL is accepted to **NeurIPS 2026**! 🎉
+- **[2026]** We release [**ManiGuard**](https://nu-ideas-lab.github.io/ManiGuard/) ([paper](https://arxiv.org/abs/2608.17386) | [code](https://github.com/NU-IDEAS-Lab/ManiGuard)), our follow-up work that extends SENTINEL's specification-grounded safety evaluation to foundation-model **robotic manipulation**, with a benchmark of 200 tasks (1,000 ID/OOD scenarios) runtime-checked by LTL<sub>f</sub> monitors and 8,000 safety-annotated demonstrations for safety-aware VLA fine-tuning.
 
 ## Introduction
-![SENTINEL teaser](assets/teaser.jpg)
+![SENTINEL overview](assets/overview.jpg)
 
 SENTINEL is a benchmark for **formally evaluating physical safety** of foundation model-based embodied agents across three complementary levels:
 
@@ -14,11 +17,11 @@ SENTINEL is a benchmark for **formally evaluating physical safety** of foundatio
 2) **High-level planning** under those requirements
 3) **Physical trajectory execution** in a simulator
 
-Unlike prior safety evaluations that rely on heuristics or subjective LLM judgments, SENTINEL grounds safety requirements in **formal temporal logic** (e.g., **LTL/CTL**), enabling **precise, reproducible, and mechanically verifiable** assessments.
+Unlike prior safety evaluations that rely on heuristics or subjective LLM judgments, SENTINEL grounds safety requirements in **formal temporal logic** (e.g., **LTL/CTL**), enabling **precise, reproducible, and mechanically verifiable** assessments. Beyond evaluation, SENTINEL's **verifiable counterexamples** can be fed back to the agent in a refinement loop, improving trajectory-level safety roughly twice as much as LLM-as-Judge feedback.
 
 This repository (**SENTINEL-Physical-Safety-Benchmark**) contains the **trajectory-level SENTINEL instantiation in ALFRED (AI2-THOR)**. It implements an evaluation pipeline that runs an embodied agent in simulation, records traces, and checks them against **CTL safety specifications**.
 
-![SENTINEL green–purple evaluation loop](assets/framework_overview.jpg)
+![SENTINEL multi-level evaluation pipeline](assets/pipeline.jpg)
 
 ---
 
@@ -68,19 +71,20 @@ export DISPLAY=:99
 ```
 
 Also, checkout this guide: [Setting up THOR on Google Cloud](https://medium.com/@etendue2013/how-to-run-ai2-thor-simulation-fast-with-google-cloud-platform-gcp-c9fcde213a4a)
+## Follow-up Work: ManiGuard
+[**ManiGuard: A Benchmark and Data Suite for Specification-Grounded Safety Evaluation and Improvement of Robotic Manipulation**](https://nu-ideas-lab.github.io/ManiGuard/) builds on SENTINEL and brings specification-grounded safety evaluation and improvement to foundation-model robotic manipulation (Isaac Sim / OmniGibson and a real Franka). See the [project page](https://nu-ideas-lab.github.io/ManiGuard/), [paper](https://arxiv.org/abs/2608.17386), and [code](https://github.com/NU-IDEAS-Lab/ManiGuard).
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
 ## Citation
 If you find the dataset or code useful, please cite:
-```
-@misc{zhan2026sentinelmultilevelformalframework,
-      title={SENTINEL: A Multi-Level Formal Framework for Safety Evaluation of Foundation Model-based Embodied Agents}, 
-      author={Simon Sinong Zhan and Yao Liu and Philip Wang and Zinan Wang and Qineng Wang and Yiyan Peng and Zhian Ruan and Xiangyu Shi and Xinyu Cao and Frank Yang and Kangrui Wang and Huajie Shao and Manling Li and Qi Zhu},
-      year={2026},
-      eprint={2510.12985},
-      archivePrefix={arXiv},
-      primaryClass={cs.AI},
-      url={https://arxiv.org/abs/2510.12985}, 
+```bibtex
+@inproceedings{zhan2026sentinelmultilevelformalframework,
+  title={SENTINEL: A Multi-Level Formal Framework for Safety Evaluation of Foundation Model-based Embodied Agents},
+  author={Simon Sinong Zhan and Philip Wang and Justin Liu and Yiyan Peng and Yiqi Lyu and Zinan Wang and Qineng Wang and Zhian Ruan and Xiangyu Shi and Xinyu Cao and Frank Yang and Zhenyang Ni and Kangrui Wang and Ruohan Zhang and Huajie Shao and Manling Li and Qi Zhu},
+  booktitle={Advances in Neural Information Processing Systems (NeurIPS)},
+  year={2026},
+  url={https://arxiv.org/abs/2510.12985}
 }
 ```
